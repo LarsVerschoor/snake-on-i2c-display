@@ -1,9 +1,14 @@
 const Oled = require('oled-i2c-bus');
 const i2c = require('i2c-bus');
 
+const screen = {
+  width: 128,
+  height: 32
+}
+
 const opts = {
-    width: 128,
-    height: 32,
+    width: screen.width,
+    height: screen.height,
     address: 0x3C
 }
 
@@ -32,7 +37,7 @@ const renderBuffer = () => {
     screenBuffer = Buffer.alloc(opts.width * opts.height / 8);
 }
 
-module.exports = { fillRect, renderBuffer }
+module.exports = { fillRect, renderBuffer, screen }
 
 /**
 
