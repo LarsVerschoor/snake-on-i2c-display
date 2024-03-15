@@ -17,7 +17,7 @@ const snake = {
   }
 }
 
-this.module.exports = snake;
+module.exports = { snake };
 
 
 
