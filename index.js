@@ -37,6 +37,8 @@ const renderScreenSegments = (segments) => {
   display.renderBuffer();
 }
 
+renderScreenSegments([{x: 2, y: 2}]);
+
 
 const init = () => {
   snake.init(7, 4, 3);
@@ -46,4 +48,4 @@ const init = () => {
   }, 1000);
 }
 
-init();
+// init();
