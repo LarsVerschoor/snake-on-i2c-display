@@ -37,7 +37,7 @@ const renderScreenSegments = (segments) => {
   display.renderBuffer();
 }
 
-renderScreenSegments([{x: 2, y: 2}]);
+// renderScreenSegments([{x: 2, y: 2}]);
 
 
 const init = () => {
@@ -45,7 +45,7 @@ const init = () => {
   setInterval(() => {
     snake.move({ x: 1, y: 0 });
     renderScreenSegments(snake.body);
-  }, 1000);
+  }, 2000);
 }
 
-// init();
+init();
