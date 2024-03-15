@@ -4,23 +4,23 @@ const snake = require('./snake');
 
 const SEGMENT_SIZE = 8
 
-const screenSegments = (() => {
-  const rows = Math.floor(display.screen.height / SEGMENT_SIZE);
-  const columns = Math.floor(display.screen.width / SEGMENT_SIZE);
-  const positions = [];
-  for(let x = 0; x < columns; x++) {
-    positions[x] = [];
-    for (let y = 0; y < rows; y++) {
-      console.log(x, y);
-      positions[x][y] = false;
-    }
-  }
-  return positions;
-})();
+// const screenSegments = (() => {
+//   const rows = Math.floor(display.screen.height / SEGMENT_SIZE);
+//   const columns = Math.floor(display.screen.width / SEGMENT_SIZE);
+//   const positions = [];
+//   for(let x = 0; x < columns; x++) {
+//     positions[x] = [];
+//     for (let y = 0; y < rows; y++) {
+//       console.log(x, y);
+//       positions[x][y] = false;
+//     }
+//   }
+//   return positions;
+// })();
 
-screenSegments[0][0] = true;
-screenSegments[1][1] = true;
-screenSegments[1][0] = true;
+// screenSegments[0][0] = true;
+// screenSegments[1][1] = true;
+// screenSegments[1][0] = true;
 
 const renderScreenSegments = (segments) => {
   segments.forEach(segment => {
@@ -35,8 +35,6 @@ const renderScreenSegments = (segments) => {
 
   display.renderBuffer();
 }
-
-renderScreenSegments();
 
 
 const init = () => {
