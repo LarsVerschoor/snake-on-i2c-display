@@ -32,6 +32,7 @@ const renderScreenSegments = () => {
       SEGMENT_SIZE - 2
     );
   }));
+  display.renderBuffer();
 }
 
 renderScreenSegments();
