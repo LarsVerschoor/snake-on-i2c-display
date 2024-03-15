@@ -25,7 +25,7 @@ const SEGMENT_SIZE = 8
 const renderScreenSegments = (segments) => {
   segments.forEach(segment => {
     const { x, y } = segment;
-    console.log(segment)
+    console.log(x, y);
     display.fillRect(
       x * SEGMENT_SIZE + 1,
       y * SEGMENT_SIZE + 1,
