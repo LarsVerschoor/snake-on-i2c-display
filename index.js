@@ -41,7 +41,7 @@ const renderScreenSegments = (segments) => {
 
 
 const init = () => {
-  snake.init(7, 4, 3);
+  snake.init(7, 3, 3);
   setInterval(() => {
     snake.move({ x: 1, y: 0 });
     console.log(snake.body);
