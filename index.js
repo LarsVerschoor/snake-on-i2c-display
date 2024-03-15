@@ -18,11 +18,11 @@ const renderScreenSegments = (segments) => {
 }
 
 const init = () => {
-  snake.init(7, 1, 3);
+  snake.init(7, 1, 4);
   setInterval(() => {
     snake.move({ x: 1, y: 0 });
     renderScreenSegments(snake.body);
-  }, 2000);
+  }, 1000);
 }
 
 init();
