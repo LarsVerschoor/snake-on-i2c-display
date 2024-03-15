@@ -17,7 +17,7 @@ const snake = {
   }
 }
 
-module.exports = { snake };
+module.exports = snake;
 
 
 
