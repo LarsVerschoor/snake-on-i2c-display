@@ -13,7 +13,6 @@ const snake = {
     }
     this.body[0].x += direction.x;
     this.body[0].y += direction.y;
-    console.log(this.body);
   }
 }
 
