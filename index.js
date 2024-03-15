@@ -23,7 +23,7 @@ const SEGMENT_SIZE = 8
 // screenSegments[1][0] = true;
 
 const renderScreenSegments = (segments) => {
-  segments.forEach(segment => {
+  segments.forEach((segment) => {
     const { x, y } = segment;
     console.log(x, y);
     display.fillRect(
@@ -44,6 +44,7 @@ const init = () => {
   snake.init(7, 4, 3);
   setInterval(() => {
     snake.move({ x: 1, y: 0 });
+    console.log(snake.body);
     renderScreenSegments(snake.body);
   }, 2000);
 }
