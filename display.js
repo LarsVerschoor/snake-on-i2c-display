@@ -34,7 +34,7 @@ const fillRect = (xStart, yStart, width, height) => {
 const renderBuffer = () => {
     oled.buffer = screenBuffer;
     oled.update();
-    screenBuffer = Buffer.alloc(DISPLAY_WIDTH * DISPLAY_HEIGHT / SEGMENT_SIZE);
+    screenBuffer = Buffer.alloc(DISPLAY_WIDTH * DISPLAY_HEIGHT / 8);
 }
 
 const getPlayArea = () => {
