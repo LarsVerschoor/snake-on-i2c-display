@@ -1,0 +1,5 @@
+module.exports = {
+  DISPLAY_WIDTH: 128,
+  DISPLAY_HEIGHT: 32,
+  SEGMENT_SIZE: 8
+}

@@ -1,8 +1,7 @@
 const display = require('./display');
 const snake = require('./snake');
 const input = require('./input');
-
-const SEGMENT_SIZE = 8;
+const { SEGMENT_SIZE } = require('./includes/settings');
 
 const playArea = display.getPlayArea();
 

@@ -1,24 +1,24 @@
 const Oled = require('oled-i2c-bus');
 const i2c = require('i2c-bus');
-
-const screen = {
-  width: 128,
-  height: 32
-}
+const {
+  DISPLAY_WIDTH,
+  DISPLAY_HEIGHT,
+  SEGMENT_SIZE
+} = require('./includes/settings');
 
 const opts = {
-    width: screen.width,
-    height: screen.height,
+    width: DISPLAY_WIDTH,
+    height: DISPLAY_HEIGHT,
     address: 0x3C
 }
 
 const i2cBus = i2c.openSync(1);
 const oled = new Oled(i2cBus, opts);
 
-let screenBuffer = Buffer.alloc(opts.width * opts.height / 8);
+let screenBuffer = Buffer.alloc(DISPLAY_WIDTH * DISPLAY_HEIGHT / 8);
 
 const addToBuffer = (x, y) => {
-    const byteIndex = Math.floor(y / 8) * opts.width + x;
+    const byteIndex = Math.floor(y / 8) * DISPLAY_WIDTH + x;
     const bitIndex = y % 8;
     screenBuffer[byteIndex] |= (1 << bitIndex);
 }
@@ -34,13 +34,13 @@ const fillRect = (xStart, yStart, width, height) => {
 const renderBuffer = () => {
     oled.buffer = screenBuffer;
     oled.update();
-    screenBuffer = Buffer.alloc(opts.width * opts.height / 8);
+    screenBuffer = Buffer.alloc(DISPLAY_WIDTH * DISPLAY_HEIGHT / SEGMENT_SIZE);
 }
 
 const getPlayArea = () => {
   const { width, height } = opts;
-  const columns = Math.floor(width / 8);
-  const rows = Math.floor(height / 8);
+  const columns = Math.floor(width / SEGMENT_SIZE);
+  const rows = Math.floor(height / SEGMENT_SIZE);
   return {columns, rows}
 }
 
