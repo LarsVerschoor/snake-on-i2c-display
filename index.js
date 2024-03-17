@@ -61,6 +61,7 @@ const init = () => {
     input.reset();
 
     if (direction) {
+      input.lastInput = direction;
       const directionObject = keyToDirection[direction];
       snake.move(directionObject);
     } else snake.move(keyToDirection[input.lastInput]);
