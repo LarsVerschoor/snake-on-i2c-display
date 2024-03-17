@@ -31,22 +31,18 @@ const getDirection = () => {
 
   const possibleDirections = [];
 
-  const possibleDirection = inputsSinceLastFrame.forEach(inputKey => {
+  inputsSinceLastFrame.forEach(inputKey => {
     switch(inputKey) {
-      case inputKey === 'w' && lastFrameInput === 's':
-        break;
-      
-      case inputKey === 'a' && lastFrameInput === 'd':
-        break;
-
-      case inputKey === 's' && lastFrameInput === 'w':
-        break;
-
-      case inputKey === 'd' && lastFrameInput === 'a':
-        break;
-
-      default:
+      case inputKey === 'w' && lastFrameInput !== 's':
         possibleDirections.push(inputKey);
+      case inputKey === 'a' && lastFrameInput !== 'd':
+        possibleDirections.push(inputKey);
+      case inputKey === 's' && lastFrameInput !== 'w':
+        possibleDirections.push(inputKey);
+      case inputKey === 'd' && lastFrameInput !== 'a':
+        possibleDirections.push(inputKey);
+      default:
+        break;
     }
   })
 
