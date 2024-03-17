@@ -33,13 +33,13 @@ const getDirection = () => {
 
   inputsSinceLastFrame.forEach(inputKey => {
     switch(inputKey) {
-      case inputKey === 'w' && lastFrameInput !== 's':
+      case (inputKey === 'w' && lastFrameInput !== 's'):
         possibleDirections.push(inputKey);
-      case inputKey === 'a' && lastFrameInput !== 'd':
+      case (inputKey === 'a' && lastFrameInput !== 'd'):
         possibleDirections.push(inputKey);
-      case inputKey === 's' && lastFrameInput !== 'w':
+      case (inputKey === 's' && lastFrameInput !== 'w'):
         possibleDirections.push(inputKey);
-      case inputKey === 'd' && lastFrameInput !== 'a':
+      case (inputKey === 'd' && lastFrameInput !== 'a'):
         possibleDirections.push(inputKey);
       default:
         break;
@@ -49,20 +49,18 @@ const getDirection = () => {
   console.log(possibleDirections);
 
   if (possibleDirections) return possibleDirections[0];
-  return null;
+  return lastFrameInput;
 }
 
 const init = () => {
   snake.init(7, 1, 4);
   setInterval(() => {
     const direction = getDirection();
+    input.lastInput = direction;
     input.reset();
-
-    if (direction) {
-      input.lastInput = direction;
-      const directionObject = keyToDirection[direction];
-      snake.move(directionObject);
-    } else snake.move(keyToDirection[input.lastInput]);
+    
+    const directionObject = keyToDirection[direction];
+    snake.move(directionObject);
     
     renderScreenSegments(snake.body);
   }, 1000);
