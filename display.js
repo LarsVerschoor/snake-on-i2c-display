@@ -35,7 +35,6 @@ const renderBuffer = () => {
     oled.buffer = screenBuffer;
     oled.update();
     screenBuffer = Buffer.alloc(opts.width * opts.height / 8);
-    console.log('render')
 }
 
 module.exports = { fillRect, renderBuffer, screen }

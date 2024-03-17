@@ -46,6 +46,8 @@ const getDirection = () => {
     }
   })
 
+  console.log(possibleDirections);
+
   if (possibleDirections) return possibleDirections[0];
   return null;
 }
