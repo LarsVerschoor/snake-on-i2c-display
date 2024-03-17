@@ -29,26 +29,28 @@ const getDirection = () => {
   const inputsSinceLastFrame = input.pressedKeys;
   const lastFrameInput = input.lastInput;
 
-  const possibleDirection = inputsSinceLastFrame.forEach(input => {
-    switch(input) {
-      case input === 'w' && lastFrameInput === 's':
+  const possibleDirections = [];
+
+  const possibleDirection = inputsSinceLastFrame.forEach(inputKey => {
+    switch(inputKey) {
+      case inputKey === 'w' && lastFrameInput === 's':
         break;
       
-      case input === 'a' && lastFrameInput === 'd':
+      case inputKey === 'a' && lastFrameInput === 'd':
         break;
 
-      case input === 's' && lastFrameInput === 'w':
+      case inputKey === 's' && lastFrameInput === 'w':
         break;
 
-      case input === 'd' && lastFrameInput === 'a':
+      case inputKey === 'd' && lastFrameInput === 'a':
         break;
 
       default:
-        return input;
+        possibleDirections.push(inputKey);
     }
   })
 
-  if (possibleDirection) return possibleDirection
+  if (possibleDirections) return possibleDirections[0];
   return null;
 }
 
@@ -61,7 +63,7 @@ const init = () => {
     if (direction) {
       const directionObject = keyToDirection(direction);
       snake.move(directionObject);
-    }
+    } else snake.move(keyToDirection(input.lastInput));
     
     renderScreenSegments(snake.body);
   }, 1000);
