@@ -21,12 +21,12 @@ const renderScreenSegments = (segments) => {
 }
 
 const init = () => {
-  snake.init(7, 1, 4, playArea);
+  snake.init(7, 1, 3, playArea);
   setInterval(() => {
     const direction = input.getNextDirection();
     snake.move(direction);
     renderScreenSegments(snake.body);
-  }, 1000);
+  }, 200);
 }
 
 init();
