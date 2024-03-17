@@ -4,6 +4,8 @@ const input = require('./input');
 
 const SEGMENT_SIZE = 8;
 
+const playArea = display.getPlayArea();
+
 const renderScreenSegments = (segments) => {
   segments.forEach((segment) => {
     const { x, y } = segment;
@@ -18,28 +20,8 @@ const renderScreenSegments = (segments) => {
   display.renderBuffer();
 }
 
-const getDirection = () => {
-  const inputsSinceLastFrame = input.pressedKeys;
-  const lastFrameInput = input.lastInput;
-  console.log(inputsSinceLastFrame);
-
-  const possibleDirections = [];
-
-  inputsSinceLastFrame.forEach(inputKey => {
-    if (inputKey === 'w' && lastFrameInput !== 's') possibleDirections.push(keyToDirection['w']);
-    else if (inputKey === 'a' && lastFrameInput !== 'd') possibleDirections.push(keyToDirection['w']);
-    else if (inputKey === 's' && lastFrameInput !== 'w') possibleDirections.push(keyToDirection['w']);
-    else if (inputKey === 'd' && lastFrameInput !== 'a') possibleDirections.push(keyToDirection['w']);
-  })
-
-  console.log(possibleDirections);
-
-  if (possibleDirections) return possibleDirections[0];
-  return lastFrameInput;
-}
-
 const init = () => {
-  snake.init(7, 1, 4);
+  snake.init(7, 1, 4, playArea);
   setInterval(() => {
     const direction = input.getNextDirection();
     snake.move(direction);

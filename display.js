@@ -37,7 +37,14 @@ const renderBuffer = () => {
     screenBuffer = Buffer.alloc(opts.width * opts.height / 8);
 }
 
-module.exports = { fillRect, renderBuffer, screen }
+const getPlayArea = () => {
+  const { width, height } = opts;
+  const columns = Math.floor(width / 8);
+  const rows = Math.floor(height / 8);
+  return {columns, rows}
+}
+
+module.exports = { fillRect, renderBuffer, screen, getPlayArea }
 
 /**
 
