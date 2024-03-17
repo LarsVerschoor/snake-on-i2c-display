@@ -44,7 +44,7 @@ const getPlayArea = () => {
   return {columns, rows}
 }
 
-module.exports = { fillRect, renderBuffer, screen, getPlayArea }
+module.exports = { fillRect, renderBuffer, getPlayArea }
 
 /**
 
