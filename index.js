@@ -28,22 +28,15 @@ const renderScreenSegments = (segments) => {
 const getDirection = () => {
   const inputsSinceLastFrame = input.pressedKeys;
   const lastFrameInput = input.lastInput;
+  console.log(inputsSinceLastFrame);
 
   const possibleDirections = [];
 
   inputsSinceLastFrame.forEach(inputKey => {
-    switch(inputKey) {
-      case (inputKey === 'w' && lastFrameInput !== 's'):
-        possibleDirections.push(inputKey);
-      case (inputKey === 'a' && lastFrameInput !== 'd'):
-        possibleDirections.push(inputKey);
-      case (inputKey === 's' && lastFrameInput !== 'w'):
-        possibleDirections.push(inputKey);
-      case (inputKey === 'd' && lastFrameInput !== 'a'):
-        possibleDirections.push(inputKey);
-      default:
-        break;
-    }
+    if (inputKey === 'w' && lastFrameInput !== 's') possibleDirections.push(keyToDirection['w']);
+    else if (inputKey === 'a' && lastFrameInput !== 'd') possibleDirections.push(keyToDirection['w']);
+    else if (inputKey === 's' && lastFrameInput !== 'w') possibleDirections.push(keyToDirection['w']);
+    else if (inputKey === 'd' && lastFrameInput !== 'a') possibleDirections.push(keyToDirection['w']);
   })
 
   console.log(possibleDirections);
@@ -58,8 +51,9 @@ const init = () => {
     const direction = getDirection();
     input.lastInput = direction;
     input.reset();
-    
+
     const directionObject = keyToDirection[direction];
+    console.log(directionObject);
     snake.move(directionObject);
     
     renderScreenSegments(snake.body);
