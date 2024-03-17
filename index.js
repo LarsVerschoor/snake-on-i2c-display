@@ -4,13 +4,6 @@ const input = require('./input');
 
 const SEGMENT_SIZE = 8;
 
-const keyToDirection = {
-  w: { x: 0, y: -1 },
-  a: { x: -1, y: 0 },
-  s: { x: 0, y: 1 },
-  d: { x: 1, y: 0 }
-}
-
 const renderScreenSegments = (segments) => {
   segments.forEach((segment) => {
     const { x, y } = segment;
@@ -48,14 +41,8 @@ const getDirection = () => {
 const init = () => {
   snake.init(7, 1, 4);
   setInterval(() => {
-    const direction = getDirection();
-    input.lastInput = direction;
-    input.reset();
-
-    const directionObject = keyToDirection[direction];
-    console.log(directionObject);
-    snake.move(directionObject);
-    
+    const direction = input.getNextDirection();
+    snake.move(direction);
     renderScreenSegments(snake.body);
   }, 1000);
 }
