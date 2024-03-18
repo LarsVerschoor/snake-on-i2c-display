@@ -35,7 +35,17 @@ const fillRect = (xStart, yStart, width, height) => {
 const renderBuffer = () => {
     // oled.buffer = screenBuffer;
     // oled.update();
-    i2cBus.writeI2cBlockSync(address, 0x40, screenBuffer.length, screenBuffer);
+
+
+    const chunkSize = 32;
+    for (let i = 0; i < screenBuffer.length; i += chunkSize) {
+      const chunk = screenBuffer.slice(i, i + chunkSize);
+      i2cBus.writeI2cBlockSync(address, 0x40, chunk.length, chunk);
+    }
+    // i2cBus.writeI2cBlockSync(address, 0x40, screenBuffer.length, screenBuffer);
+
+
+
     screenBuffer = Buffer.alloc(DISPLAY_WIDTH * DISPLAY_HEIGHT / 8);
 }
 
