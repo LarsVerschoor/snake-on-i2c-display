@@ -1,5 +1,6 @@
-const Oled = require('oled-i2c-bus');
+// const Oled = require('oled-i2c-bus');
 const i2c = require('i2c-bus');
+const address = 0x3C;
 const {
   DISPLAY_WIDTH,
   DISPLAY_HEIGHT,
@@ -13,7 +14,7 @@ const opts = {
 }
 
 const i2cBus = i2c.openSync(1);
-const oled = new Oled(i2cBus, opts);
+// const oled = new Oled(i2cBus, opts);
 
 let screenBuffer = Buffer.alloc(DISPLAY_WIDTH * DISPLAY_HEIGHT / 8);
 
@@ -32,8 +33,9 @@ const fillRect = (xStart, yStart, width, height) => {
 }
 
 const renderBuffer = () => {
-    oled.buffer = screenBuffer;
-    oled.update();
+    // oled.buffer = screenBuffer;
+    // oled.update();
+    i2cBus.writeI2cBlockSync(address, 0x40, screenBuffer.length, screenBuffer);
     screenBuffer = Buffer.alloc(DISPLAY_WIDTH * DISPLAY_HEIGHT / 8);
 }
 
